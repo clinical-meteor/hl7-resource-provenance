@@ -1,6 +1,6 @@
 Package.describe({
   name: 'clinical:hl7-resource-provenance',
-  version: '1.1.3',
+  version: '1.1.7',
   summary: 'HL7 FHIR Resource - Provenance',
   git: 'https://github.com/clinical-meteor/hl7-resource-provenance',
   documentation: 'README.md'
@@ -25,6 +25,9 @@ Package.onUse(function (api) {
   api.use('matb33:collection-hooks@0.7.15');
   api.use('clinical:alert@2.1.3');
 
+  api.use('clinical:hl7-resource-datatypes@4.0.0');
+  api.use('clinical:hl7-resource-bundle@1.4.0');
+
   if(Package['clinical:fhir-vault-server']){
     api.use('clinical:fhir-vault-server@0.0.3', ['client', 'server'], {weak: true});
   }
@@ -36,6 +39,8 @@ Package.onUse(function (api) {
   api.export('Provenance');
   api.export('Provenances');
   api.export('ProvenanceSchema');
+
+  api.mainModule('index.jsx', 'client');
 });
 
 Npm.depends({
