@@ -127,6 +127,20 @@ export class ProvenanceTable extends React.Component {
     })
     
   }
+  renderIssuedDate(provenance){
+    if (!this.props.hideIssuedDate) {
+      return (
+        <td className='issued' onClick={ this.rowClick.bind(this, provenance._id)} style={{minWidth: '100px', paddingTop: '16px'}}>{ provenance.issued }</td>
+      );
+    }
+  }
+  renderIssuedDateHeader(){
+    if (!this.props.hideIssuedDate) {
+      return (
+        <th className='issued' style={{minWidth: '100px'}}>Issued Date</th>
+      );
+    }
+  }
   renderVerify(provenance){
     if (!this.props.hideVerify) {
       return (
@@ -155,11 +169,13 @@ export class ProvenanceTable extends React.Component {
       for (var i = 0; i < this.data.provenances.length; i++) {
         tableRows.push(
           <tr key={i} className="provenanceRow" style={{cursor: "pointer"}}>
-            <td className='issued' onClick={ this.rowClick.bind(this, this.data.provenances[i]._id)} style={{minWidth: '100px', paddingTop: '16px'}}>{this.data.provenances[i].issued }</td>
+            {this.renderIssuedDate(this.data.provenances[i]) }
+
             <td className='targetReference' onClick={ this.onConsentClick.bind(this, this.data.provenances[i]._id, this.data.provenances[i].targetReference )} style={this.data.style.cell}>{this.data.provenances[i].targetReference }</td>
             <td className='signatureDate' style={this.data.style.cellHideOnPhone}>{this.data.provenances[i].signatureDate}</td>
             <td className='signatureBlob' style={this.data.style.cellHideOnPhone}>{this.data.provenances[i].signatureBlob.substring(0,64) + '...' }</td>
             <td className='signatureReference' style={this.data.style.cellHideOnPhone}>{this.data.provenances[i].signatureReference}</td>
+
             {this.renderVerify(this.data.provenances[i]) }
           </tr>
         );
@@ -171,8 +187,7 @@ export class ProvenanceTable extends React.Component {
         <Table id='provenancesTable' hover >
           <thead>
             <tr>
-
-              <th className='issued' style={{minWidth: '100px'}}>Issued Date</th>
+              {this.renderIssuedDateHeader() }
               <th className='targetReference' style={this.data.style.cellHideOnPhone}>Target</th>
               <th className='signatureDate' style={this.data.style.cellHideOnPhone} >Signature Date</th>
               <th className='signatureDate' style={this.data.style.cellHideOnPhone} >Signature Blob</th>
