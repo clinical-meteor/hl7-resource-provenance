@@ -91,6 +91,15 @@ export class ProvenanceTable extends React.Component {
       data.style.cellHideOnPhone.display = 'table-cell';
     }
 
+
+
+      if(this.props.disableBarcodes){
+        data.signatureBlob = "signatureBlob"
+      } else {
+        data.signatureBlob = "signatureBlob barcode"
+      }
+
+
     return data;
   }
   rowClick(id){
@@ -173,7 +182,7 @@ export class ProvenanceTable extends React.Component {
 
             <td className='targetReference' onClick={ this.onConsentClick.bind(this, this.data.provenances[i]._id, this.data.provenances[i].targetReference )} style={this.data.style.cell}>{this.data.provenances[i].targetReference }</td>
             <td className='signatureDate' style={this.data.style.cellHideOnPhone}>{this.data.provenances[i].signatureDate}</td>
-            <td className='signatureBlob' style={this.data.style.cellHideOnPhone}>{this.data.provenances[i].signatureBlob.substring(0,64) + '...' }</td>
+            <td className={this.data.signatureBlob} style={this.data.style.cellHideOnPhone}>{this.data.provenances[i].signatureBlob.substring(0,64) + '...' }</td>
             <td className='signatureReference' style={this.data.style.cellHideOnPhone}>{this.data.provenances[i].signatureReference}</td>
 
             {this.renderVerify(this.data.provenances[i]) }
