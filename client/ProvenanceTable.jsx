@@ -24,8 +24,8 @@ export class ProvenanceTable extends React.Component {
         },
         cellHideOnPhone: {
           visibility: 'visible',
-          display: 'table',
-          paddingTop: '16px'
+          display: 'table'
+          //paddingTop: '16px'
         },
         cell: {
           paddingTop: '16px'
@@ -93,11 +93,11 @@ export class ProvenanceTable extends React.Component {
 
 
 
-      if(this.props.disableBarcodes){
-        data.signatureBlob = "signatureBlob"
-      } else {
-        data.signatureBlob = "signatureBlob barcode"
-      }
+    if(this.props.disableBarcodes){
+      data.signatureBlob = "signatureBlob"
+    } else {
+      data.signatureBlob = "signatureBlob barcode"
+    }
 
 
     return data;
@@ -181,7 +181,7 @@ export class ProvenanceTable extends React.Component {
             {this.renderIssuedDate(this.data.provenances[i]) }
 
             <td className='targetReference' onClick={ this.onConsentClick.bind(this, this.data.provenances[i]._id, this.data.provenances[i].targetReference )} style={this.data.style.cell}>{this.data.provenances[i].targetReference }</td>
-            <td className='signatureDate' style={this.data.style.cellHideOnPhone}>{this.data.provenances[i].signatureDate}</td>
+            <td className='signatureDate' style={this.data.style.cellHideOnPhone}>{ moment(this.data.provenances[i].signatureDate).format("YYYY MM DD hh:mm:ss") }</td>
             <td className={this.data.signatureBlob} style={this.data.style.cellHideOnPhone}>{this.data.provenances[i].signatureBlob.substring(0,64) + '...' }</td>
             <td className='signatureReference' style={this.data.style.cellHideOnPhone}>{this.data.provenances[i].signatureReference}</td>
 
