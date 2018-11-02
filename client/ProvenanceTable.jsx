@@ -109,31 +109,35 @@ export class ProvenanceTable extends React.Component {
   }
   handleVerify(provenance){
     console.log('handleVerify', provenance);
+
+    if(this.props.onVerify){
+      this.props.onVerify(provenance);
+    } 
     
-    HTTP.post('https://poc-node-1.fhirblocks.io/smoac/audit/validate', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-      },
-      data: {
-        "csiGuid": get(provenance, 'csiGuid', '/').split('csi/')[1],
-        "signature": get(provenance, 'signatureBlob')
-      }
-    }, function(error, result){
-      if(error){
-        alert('Error!  Something wrong happened.  :( /nThis is extremely likely a 500 Internal Server Error')
-      }
-      if(result){
-        console.log('result', result)
-        let validation = JSON.parse(result.content);
-        if(validation.valid === true){
-          alert('Valid!  This signature was found matched to this self-soverign identifier on the blockchain.')
-        } else if (validation.valid === false){
-          alert("Not valid.  Either the signature or the self-soverign identifier weren't found.  A match couldn't be made. ")
-        }
-      }
-    })
+    // HTTP.post('https://poc-node-1.fhirblocks.io/smoac/audit/validate', {
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json',
+    //     'Access-Control-Allow-Origin': '*'
+    //   },
+    //   data: {
+    //     "csiGuid": get(provenance, 'csiGuid', '/').split('csi/')[1],
+    //     "signature": get(provenance, 'signatureBlob')
+    //   }
+    // }, function(error, result){
+    //   if(error){
+    //     alert('Error!  Something wrong happened.  :( /nThis is extremely likely a 500 Internal Server Error')
+    //   }
+    //   if(result){
+    //     console.log('result', result)
+    //     let validation = JSON.parse(result.content);
+    //     if(validation.valid === true){
+    //       alert('Valid!  This signature was found matched to this self-soverign identifier on the blockchain.')
+    //     } else if (validation.valid === false){
+    //       alert("Not valid.  Either the signature or the self-soverign identifier weren't found.  A match couldn't be made. ")
+    //     }
+    //   }
+    // })
     
   }
   renderIssuedDate(provenance){
