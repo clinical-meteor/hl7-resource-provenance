@@ -55,7 +55,7 @@ export class ProvenanceTable extends React.Component {
     }
 
     if(this.props.query){
-      query = this.options.query;
+      query = this.props.query;
     }
 
     // number of items in the table should be set globally
