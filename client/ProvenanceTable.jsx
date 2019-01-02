@@ -1,17 +1,15 @@
-import Avatar from 'material-ui/Avatar';
+
 import FlatButton from 'material-ui/FlatButton';
-import { HTTP } from 'meteor/http';
 import React from 'react';
 import { ReactMeteorData } from 'meteor/react-meteor-data';
 import ReactMixin from 'react-mixin';
 import { Table } from 'react-bootstrap';
 
 import { Session } from 'meteor/session';
-import { has, get } from 'lodash';
+import { get } from 'lodash';
 import { TableNoData } from 'meteor/clinical:glass-ui'
 import PropTypes from 'prop-types';
 
-import FaFilePdfO from 'react-icons/lib/fa/file-pdf-o';
 
 Session.setDefault('csiGuid', '')
 export class ProvenanceTable extends React.Component {

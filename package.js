@@ -1,6 +1,6 @@
 Package.describe({
   name: 'clinical:hl7-resource-provenance',
-  version: '1.1.13',
+  version: '1.1.15',
   summary: 'HL7 FHIR Resource - Provenance',
   git: 'https://github.com/clinical-meteor/hl7-resource-provenance',
   documentation: 'README.md'
@@ -45,6 +45,7 @@ Package.onUse(function (api) {
 
 Npm.depends({
   "simpl-schema": "1.5.3",
+  "react-icons": "3.2.2",
   "moment": "2.22.2",
   "lodash": "4.17.4"
 })
