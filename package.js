@@ -1,6 +1,6 @@
 Package.describe({
   name: 'clinical:hl7-resource-provenance',
-  version: '1.1.15',
+  version: '1.1.17',
   summary: 'HL7 FHIR Resource - Provenance',
   git: 'https://github.com/clinical-meteor/hl7-resource-provenance',
   documentation: 'README.md'
@@ -18,8 +18,8 @@ Package.onUse(function (api) {
   api.use('http');
   api.use('react-meteor-data@0.2.15');
 
-  api.use('clinical:glass-ui@2.2.1');
-  api.use('clinical:extended-api@2.2.2');
+  api.use('clinical:glass-ui@2.4.6');
+  api.use('clinical:extended-api@2.4.0');
   api.use('clinical:base-model@1.4.0');
   api.use('clinical:user-model@1.6.2');
   api.use('matb33:collection-hooks@0.7.15');
