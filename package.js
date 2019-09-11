@@ -1,6 +1,6 @@
 Package.describe({
   name: 'clinical:hl7-resource-provenance',
-  version: '1.1.18',
+  version: '1.1.19',
   summary: 'HL7 FHIR Resource - Provenance',
   git: 'https://github.com/clinical-meteor/hl7-resource-provenance',
   documentation: 'README.md'
